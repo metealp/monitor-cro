@@ -1,0 +1,63 @@
+<%- include("./partials/header") %>
+<div class="ui main text container segment">
+    <a href="/employees" class="ui teal button"></i>Anasayfa</a>
+    <div class="ui huge header">Yeni Personel</div>
+    <form class="ui form" action="/employees" method="POST">
+        <div class="field"> 
+            <label>Ad</label>
+            <input type="text" name="employee[Ad]" placeholder="Ad" required>
+        </div>
+        <div class="field"> 
+            <label>Soyad</label>
+            <input type="text" name="employee[Soyad]" placeholder="Soyad" required>
+        </div>
+        <div class="field"> 
+            <label>Doğum Tarihi</label>
+            <input type="date" min="1970-06-04" max="2002-06-04" name="employee[DogumTarihi]" placeholder="Doğum Tarihi" required>
+        </div>
+        <div class="field"> 
+            <label>Cinsiyet</label>
+            <select required name="employee[Cinsiyet]" class="ui dropdown" id="dropdownCinsiyet">
+                <option class="ui disabled item" value="">Cinsiyet</option>
+                <option class="item" value="Erkek">Erkek</option>
+                <option class="item" value="Kadın">Kadın</option>
+            </select>
+        </div>
+
+        <div class="field"> 
+            <label>İşe Giriş Tarihi</label>
+            <input type="date" id="IseGiris" min="1970-06-04" name="employee[IseGiris]" placeholder="İşe Giriş Tarihi" required>
+        </div>
+        <div class="field"> 
+            <label>İşten Çıkış Tarihi</label>
+            <input disabled class="employementValidation" type="date" name="employee[IstenCikis]" placeholder="İşten Çıkış Tarihi">
+        </div>
+        <div class="field"> 
+            <label>İl</label>
+            <select required name="employee[EmpIl]" class="ui dropdown" id="dropdownEmpIl">
+                <option value="">İl</option>
+                <option class="item" value="Ankara">Ankara</option>
+                <option class="item" value="İstanbul">İstanbul</option>
+            </select>
+        </div>
+        <div class="field"> 
+            <label>İlçe</label>
+            <select disabled required name="employee[EmpIlce]" class="ui dropdown" id="dropdownEmpIlce">
+                <option class="ui disabled item" value="">İlçe</option>
+            </select>
+        </div>
+        <div class="field"> 
+            <label>Aktif</label>
+            <input 
+            checked="checked" 
+            class="stillEmployed" 
+            type="checkbox" 
+            name="employee[Aktif]" 
+            placeholder="Aktif">
+        </div>
+
+
+        <button class="big ui violet basic button">Submit</button>
+    </form>
+</div>
+<%- include("./partials/footer") %>

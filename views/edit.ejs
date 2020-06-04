@@ -1,0 +1,76 @@
+<%- include("./partials/header") %>
+<div class="ui main text container segment">
+    <a href="/employees" class="ui teal button"></i>Anasayfa</a>
+    <div class="ui huge header">Güncelle <%= employee.Ad %></div>
+    <div id="jquery_test"></div>
+
+    
+    <form class="ui form" action="/employees/<%= employee._id%>?_method=PUT" method="POST">
+        <div class="field"> 
+            <label>Ad</label>
+            <input type="text" name="employee[Ad]" value="<%= employee.Ad %>" required>
+        </div>
+        <div class="field"> 
+            <label>Soyad</label>
+            <input type="text" name="employee[Soyad]" value="<%= employee.Soyad %>" required>
+        </div>
+        <div class="field"> 
+            <label>Doğum Tarihi</label>
+            <input id = "DogumTarihi" type="date" min="1970-06-04" max="2002-06-04" name="employee[DogumTarihi]" value="<%= employee.DogumTarihi.toISOString() %>" required>
+        </div>
+        <div class="field"> 
+            <label>Cinsiyet</label>
+            <select required name="employee[Cinsiyet]" class="ui dropdown" id="dropdownCinsiyet">
+                <option class="ui disabled item" value="">Cinsiyet</option>
+                <option class="item" value="Erkek" <%= employee.Cinsiyet === 'Erkek' ? 'selected' : ''%> >Erkek</option>
+                <option class="item" value="Kadın" <%= employee.Cinsiyet === 'Kadın' ? 'selected' : ''%> >Kadın</option>
+            </select>
+        </div>
+
+        <div class="field"> 
+            <label>İşe Giriş Tarihi</label>
+            <input id="IseGiris" type="date" min="1970-06-04" name="employee[IseGiris]" value="<%= employee.IseGiris.toISOString() %>" required>
+
+        </div>
+
+        <div class="field"> 
+            <label>İşten Çıkış Tarihi</label>
+                <% if(employee.Aktif) {%>
+                    <input id="istenCikis" type="date" name="employee[IstenCikis]" value="" disabled %>">
+                <% } else { %>
+                    <input required id="istenCikis" type="date" name="employee[IstenCikis]" value="<%= employee.IstenCikis.toISOString() %>">
+                <% } %>
+        </div>
+        <div class="field"> 
+            <label>İl</label>
+            <select required name="employee[EmpIl]" class="ui dropdown" id="dropdownEmpIl" value="<%= employee.EmpIl %>">
+                <option class="ui disabled item" value="">İl</option>
+                <option class="item" value="Ankara" <%= employee.EmpIl === 'Ankara' ? 'selected' : ''%> > Ankara</option>
+                <option class="item" value="İstanbul" <%= employee.EmpIl === 'İstanbul' ? 'selected' : ''%>> İstanbul</option>
+            </select>
+        </div>
+        <div class="field"> 
+            <label>İlçe</label>
+            <select required name="employee[EmpIlce]" class="ui dropdown" id="dropdownEmpIlce" value="<%= employee.EmpIlce %>">
+                <option class="ui disabled item" value="">İlçe</option>
+
+                <option class='item' value='Kadıköy' <%= employee.EmpIlce === 'Kadıköy' ? 'selected' : ''%>>Kadıköy</option>
+                <option class='item' value='Şişli' <%= employee.EmpIlce === 'Şişli' ? 'selected' : ''%>>Şişli</option>
+                <option class='item' value='Sincan' <%= employee.EmpIlce === 'Sincan' ? 'selected' : ''%>>Sincan</option>
+                <option class='item' value='Çankaya' <%= employee.EmpIlce === 'Çankaya' ? 'selected' : ''%>>Çankaya</option>
+            </select>
+        </div>
+        <div class="field"> 
+            <label>Aktif</label>
+            <% if(employee.Aktif) {%>
+                <input class="stillEmployed" type="checkbox" name="employee[Aktif]" checked>
+            <% } else { %>
+                <input class="stillEmployed" type="checkbox" name="employee[Aktif]">
+            <% } %>
+        </div>
+
+
+        <button class="big ui violet basic button">Submit</button>
+    </form>
+</div>
+<%- include("./partials/footer") %>

@@ -1,0 +1,77 @@
+<%- include("./partials/header") %>
+            <div class="ui top attached segment">
+                <div class="ui divided items">
+                    <a href="/employees/new" class="ui teal button"><i class="plus icon"></i>Yeni Personel</a>
+                    <table class="ui selectable celled table">
+                        <thead>
+                            <tr>
+                                <th>Ad</th>
+                                <th>Soyad</th>
+                                <th>Doğum Tarihi</th>
+                                <th>Cinsiyet</th>
+                                <th>İşe Giriş</th>
+                                <th>İşten Çıkış</th>
+                                <th>İl</th>
+                                <th>İlçe</th>
+                                <th>Aktif</th>
+                                <th class="ui center aligned">Eylem</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <%employees.forEach(function(employee){ %>
+                            <tr>
+                                <td>
+                                    <%= employee.Ad %>
+                                </td>
+                                <td>
+                                    <%= employee.Soyad %>
+                                </td>
+                                <td>
+                                    <%= employee.DogumTarihi.toDateString() %>
+                                </td>
+                                <td>
+                                    <%= employee.Cinsiyet %>
+                                </td>
+                                <td>
+                                    <%= employee.IseGiris.toDateString() %>
+                                </td>
+                                <td>
+                                    <% if(employee.IstenCikis != null || employee.IstenCikis != undefined ) {%>
+                                        <%= employee.IstenCikis.toDateString()%>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <%= employee.EmpIl %>
+                                </td>
+                                <td>
+                                    <%= employee.EmpIlce %>
+                                </td>
+                                <td>
+                                    <% if(employee.Aktif) {%>
+                                        <i class="circle green icon"></i>
+                                    <% } else { %>
+                                        <i class="circle red icon"></i>
+                                    <% } %>
+                                </td>
+                                <td class="ui center aligned">
+                                    <div class="ui icon buttons ">
+
+                                        <form class="" method="get" action="/employees/<%=employee._id%>/edit">
+                                            <button class="ui inverted center aligned left attached orange button"> <i class="edit icon"></i></button>
+                                        </form>
+
+                                        <form class="" action="/employees/<%= employee._id%>?_method=DELETE" method="POST">
+                                            <button class="ui inverted center aligned right attached red button"><i class="trash alternate icon"></i></button>
+                                        </form>
+                                      </div>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+           
+           
+<%- include("./partials/footer") %>
