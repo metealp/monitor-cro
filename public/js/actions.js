@@ -18,10 +18,8 @@ $(function(){
         if ($(this).prop('checked')) {
             $("#istenCikis").val("YYYY-MM-DD");
             $("#istenCikis").prop( "disabled", true );
-            $("#istenCikis").prop( "required", false );
         } else {
             $("#istenCikis").prop( "disabled", false );
-            $("#istenCikis").prop( "required", true );
             var new_limit = $("#IseGiris").val()
             $('#istenCikis').attr('min', new_limit);
         }

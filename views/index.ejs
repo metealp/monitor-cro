@@ -28,13 +28,18 @@
                                     <%= employee.Soyad %>
                                 </td>
                                 <td>
-                                    <%= employee.DogumTarihi.toDateString() %>
+                                    <% if(employee.DogumTarihi != null || employee.DogumTarihi != undefined) {%>
+                                        <%= employee.DogumTarihi.toDateString() %>
+                                    <% } %>
                                 </td>
                                 <td>
                                     <%= employee.Cinsiyet %>
                                 </td>
                                 <td>
-                                    <%= employee.IseGiris.toDateString() %>
+                                    <% if(employee.IseGiris != null || employee.IseGiris != undefined) {%>
+                                        <%= employee.IseGiris.toDateString() %>
+                                    <% } %>
+
                                 </td>
                                 <td>
                                     <% if(employee.IstenCikis != null || employee.IstenCikis != undefined ) {%>

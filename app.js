@@ -134,7 +134,7 @@ app.delete("/employees/:id", function(req,res){
     // destroy blog post
     Employees.findByIdAndRemove(req.params.id, function(err){
         if(err){
-            req.flash("error", "Personel başarıyla kayıtlardan silindi.")
+            req.flash("error", "Personel kayıtlardan silinemedi, lütfen sistem yöneticisine başvurun.")
             res.redirect("/employees");
         } else {
             //redirect to index
