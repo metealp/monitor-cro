@@ -9,6 +9,7 @@ var express = require("express"),
 var app = express();
 
 mongoose.connect("mongodb+srv://metealpk:sru4pthM76dKmuW@cluster0-ucesk.mongodb.net/medCase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+// mongoose.connect("mongodb://localhost/medCase", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -143,7 +144,12 @@ app.delete("/employees/:id", function(req,res){
     });
 });
 
-//listening the server
+// listening the server
 app.listen(process.env.PORT, process.env.IP, function(){
 	console.log("server started");
 });
+
+// //listening the server
+// app.listen(3000, function(){
+// 	console.log("server started");
+// });
